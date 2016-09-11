@@ -1,26 +1,29 @@
 //
-//  WelcomeViewController.m
+//  HomeScreenViewController.m
 //  OLXTest
 //
 //  Created by Macbook on 11/09/16.
 //  Copyright © 2016 Macbook. All rights reserved.
 //
 
-#import "WelcomeViewController.h"
 #import "HomeScreenViewController.h"
 
-@interface WelcomeViewController () {
-    
-}
-@property (weak, nonatomic) IBOutlet UIImageView *mostVisitedImageView;
-@property (weak, nonatomic) IBOutlet UIButton *btnListing;
+@interface HomeScreenViewController ()
+
+@property (nonatomic) NSMutableArray* arrItems;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
 
-@implementation WelcomeViewController
+@implementation HomeScreenViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Categories";
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,10 +31,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)tapGoListing:(id)sender {
-    HomeScreenViewController* home = [[HomeScreenViewController alloc] initWithNibName:@"HomeScreenViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:home animated:YES];
-}
 /*
 #pragma mark - Navigation
 
