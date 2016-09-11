@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WelcomeViewController.h
 //  OLXTest
 //
 //  Created by Macbook on 11/09/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WelcomeViewController : UIViewController
 
 @end
-
