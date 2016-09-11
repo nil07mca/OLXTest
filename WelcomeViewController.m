@@ -15,6 +15,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *mostVisitedImageView;
 @property (weak, nonatomic) IBOutlet UIButton *btnListing;
+@property (weak, nonatomic) IBOutlet UILabel *lblImageTag;
+
 @end
 
 @implementation WelcomeViewController
@@ -32,6 +34,7 @@
     Categories* category = [[DataManager sharedManager] getRecentCategoty];
     if (category.isRecentVisited == YES) {
         [_mostVisitedImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.imageURL]]]];
+        [_lblImageTag setText:category.imageTag];
     }
     
 }

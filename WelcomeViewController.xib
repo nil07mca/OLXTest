@@ -3,11 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeViewController">
             <connections>
                 <outlet property="btnListing" destination="I5O-TB-N9V" id="L6k-D8-qiJ"/>
+                <outlet property="lblImageTag" destination="yNB-9f-D8n" id="FSY-Ad-ruh"/>
                 <outlet property="mostVisitedImageView" destination="tmq-Nc-Yot" id="qEu-3k-9WS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,11 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmq-Nc-Yot">
-                    <rect key="frame" x="67" y="212" width="240" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tmq-Nc-Yot">
+                    <rect key="frame" x="67" y="212" width="240" height="240"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="128" id="kI8-6X-olJ"/>
+                        <constraint firstAttribute="width" secondItem="tmq-Nc-Yot" secondAttribute="height" multiplier="1:1" id="I8t-si-oRZ"/>
+                        <constraint firstAttribute="height" constant="240" id="gCZ-NX-eDW"/>
+                        <constraint firstAttribute="width" constant="240" id="sEp-Qj-6dn"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="gCZ-NX-eDW"/>
+                        </mask>
+                    </variation>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Welcome to the classifieds site!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN2-5M-0WW">
                     <rect key="frame" x="64" y="122" width="246" height="21"/>
@@ -30,24 +39,49 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5O-TB-N9V">
-                    <rect key="frame" x="142" y="380" width="90" height="30"/>
+                    <rect key="frame" x="142" y="517" width="90" height="30"/>
                     <state key="normal" title="Go To Listing"/>
                     <connections>
                         <action selector="tapGoListing:" destination="-1" eventType="touchUpInside" id="ah9-WX-JSA"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNB-9f-D8n">
+                    <rect key="frame" x="67" y="469" width="243" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="miw-9R-FFU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="tmq-Nc-Yot" firstAttribute="top" secondItem="uN2-5M-0WW" secondAttribute="bottom" constant="69" id="L8b-O9-u6s"/>
-                <constraint firstItem="I5O-TB-N9V" firstAttribute="top" secondItem="tmq-Nc-Yot" secondAttribute="bottom" constant="40" id="cPg-wQ-Jac"/>
+                <constraint firstItem="yNB-9f-D8n" firstAttribute="top" secondItem="tmq-Nc-Yot" secondAttribute="bottom" constant="17" id="1ti-5Q-iek"/>
+                <constraint firstItem="tmq-Nc-Yot" firstAttribute="top" secondItem="uN2-5M-0WW" secondAttribute="bottom" constant="69" id="8mK-M1-C2K"/>
+                <constraint firstItem="I5O-TB-N9V" firstAttribute="top" secondItem="tmq-Nc-Yot" secondAttribute="bottom" constant="27" id="96e-N1-EoW"/>
+                <constraint firstItem="I5O-TB-N9V" firstAttribute="top" secondItem="yNB-9f-D8n" secondAttribute="bottom" constant="27" id="B3U-37-Rft"/>
+                <constraint firstItem="yNB-9f-D8n" firstAttribute="top" secondItem="tmq-Nc-Yot" secondAttribute="bottom" constant="17" id="Gmd-6o-BlU"/>
+                <constraint firstAttribute="trailing" secondItem="tmq-Nc-Yot" secondAttribute="trailing" constant="68" id="V9n-Gi-pR8"/>
+                <constraint firstItem="tmq-Nc-Yot" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="67" id="ZmO-fi-0kp"/>
+                <constraint firstItem="I5O-TB-N9V" firstAttribute="centerX" secondItem="tmq-Nc-Yot" secondAttribute="centerX" id="do1-IZ-vRv"/>
                 <constraint firstItem="uN2-5M-0WW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ehr-1p-hxT"/>
-                <constraint firstItem="uN2-5M-0WW" firstAttribute="centerX" secondItem="tmq-Nc-Yot" secondAttribute="centerX" id="fdw-TR-vtt"/>
-                <constraint firstItem="tmq-Nc-Yot" firstAttribute="centerX" secondItem="I5O-TB-N9V" secondAttribute="centerX" id="hKV-dp-YRU"/>
-                <constraint firstItem="tmq-Nc-Yot" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="67" id="lij-Bp-OsF"/>
+                <constraint firstItem="I5O-TB-N9V" firstAttribute="top" secondItem="yNB-9f-D8n" secondAttribute="bottom" constant="48" id="iwq-50-ari"/>
+                <constraint firstItem="yNB-9f-D8n" firstAttribute="leading" secondItem="tmq-Nc-Yot" secondAttribute="leading" id="jV0-LF-YQs"/>
+                <constraint firstItem="yNB-9f-D8n" firstAttribute="trailing" secondItem="uN2-5M-0WW" secondAttribute="trailing" id="sJw-qK-hw7"/>
                 <constraint firstItem="uN2-5M-0WW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="122" id="w1A-Lv-xZp"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="1ti-5Q-iek"/>
+                    <exclude reference="96e-N1-EoW"/>
+                    <exclude reference="iwq-50-ari"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="Logo" width="250" height="250"/>
+    </resources>
 </document>

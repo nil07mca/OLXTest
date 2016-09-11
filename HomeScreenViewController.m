@@ -98,11 +98,37 @@
 
 
 - (void)tappedOnIndexPath:(NSIndexPath *)indexPath {
+    [self showSelectedItemFor:indexPath];
+}
+
+#pragma mark - show alert
+- (void) showSelectedItemFor:(NSIndexPath*)indexPath {
+    Categories* categories = [_arrItems objectAtIndex:indexPath.row];
+    [self adjustLayout:indexPath];
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"OLX"
+                                  message:categories.imageTag
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+- (void) adjustLayout:(NSIndexPath*)indexPath {
+    Categories* categories = [_arrItems objectAtIndex:indexPath.row];
     for (Categories* cat in _arrItems) {
         cat.isRecentVisited = NO ;
         //        cat.categoryWeight = 1 ;
     }
-    Categories* categories = [_arrItems objectAtIndex:indexPath.row];
     categories.isRecentVisited = YES ;
     categories.visitCount++ ;
     int maxWeight = 1;
@@ -120,7 +146,6 @@
     }
     [self.collectionView reloadData];
 }
-
 /*
 #pragma mark - Navigation
 

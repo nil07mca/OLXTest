@@ -61,7 +61,10 @@
 - (Categories*)getRecentCategoty {
     Categories* categories;
     for (Categories *cat in _arrItems) {
-        if (cat.isRecentVisited) {
+        if (cat.categoryWeight == 3) {
+            categories = cat ;
+            break;
+        }else if (cat.isRecentVisited) {
             categories = cat ;
             break;
         }
