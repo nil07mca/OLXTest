@@ -7,6 +7,7 @@
 //
 
 #import "HomeScreenViewController.h"
+#import "RFQuiltLayout.h"
 
 @interface HomeScreenViewController ()
 
@@ -29,6 +30,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUpLayout {
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
+    layout.direction = UICollectionViewScrollDirectionVertical;
+    layout.blockPixels = CGSizeMake(self.collectionView.frame.size.width/4,self.collectionView.frame.size.width/4);
 }
 
 /*
