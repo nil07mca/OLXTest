@@ -8,8 +8,9 @@
 
 #import "WelcomeViewController.h"
 #import "HomeScreenViewController.h"
+#import "DataManager.h"
 
-@interface WelcomeViewController () {
+@interface WelcomeViewController ()<DataManagerDelegate> {
     
 }
 @property (weak, nonatomic) IBOutlet UIImageView *mostVisitedImageView;
@@ -21,6 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _btnListing.hidden = YES ;
+    [DataManager sharedManager].delegate = self;
+    [[DataManager sharedManager] fetchCategoryList];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    Categories* category = [[DataManager sharedManager] getRecentCategoty];
+    if (category.isRecentVisited == YES) {
+        [_mostVisitedImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.imageURL]]]];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,6 +45,12 @@
     HomeScreenViewController* home = [[HomeScreenViewController alloc] initWithNibName:@"HomeScreenViewController" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:home animated:YES];
 }
+
+#pragma mark - DataManagerDelegate
+- (void)dataLoadCompletedWithData:(NSArray*)data {
+    _btnListing.hidden = NO ;
+}
+
 /*
 #pragma mark - Navigation
 
